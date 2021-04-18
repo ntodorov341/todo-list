@@ -11,23 +11,27 @@ import 'react-native-gesture-handler';
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { ThemeContextProvider } from './core/ThemeProvider';
 import Task from './components/task/Task';
 import { SafeAreaView, ScrollView } from 'react-native';
+import theme from './theme/theme';
 
 const task = {
-  description: 'Code the appsdasgfasfsafdasfsfasfsfasadasdsas',
-  date: new Date(Date.now()).toDateString(),
-  completed: false,
+    description: 'Code the application for todo',
+    date: new Date(Date.now()).toLocaleTimeString(),
+    completed: false,
 };
 
 const App = () => (
-  <NavigationContainer>
-    <SafeAreaView>
-      <ScrollView>
-        <Task task={task} />
-      </ScrollView>
-    </SafeAreaView>
-  </NavigationContainer>
+    <ThemeContextProvider theme={theme}>
+        <NavigationContainer>
+            <SafeAreaView>
+                <ScrollView>
+                    <Task task={task} />
+                </ScrollView>
+            </SafeAreaView>
+        </NavigationContainer>
+    </ThemeContextProvider>
 );
 
 export default App;
